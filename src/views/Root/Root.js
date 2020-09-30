@@ -7,7 +7,7 @@ const Root = () => {
   return (
     <Provider store={store}>
       <div>
-        <h1>Hello Redux Saga</h1>
+        <h1>Junior Start</h1>
       </div>
     </Provider>
   );

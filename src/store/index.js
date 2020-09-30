@@ -1,14 +1,12 @@
 import { createStore, applyMiddleware } from "redux";
-
-import createSagaMiddleware from "redux-saga";
+import thunk from "redux-thunk";
 
 import rootReducer from "../reducers";
 import { createLogger } from "redux-logger";
 
-const sagaMiddleware = createSagaMiddleware();
 const loggerMiddleware = createLogger();
 
-let middleware = [sagaMiddleware];
+let middleware = [thunk];
 
 if (process.env.NODE_ENV !== "production") {
   middleware = [...middleware, loggerMiddleware];
