@@ -1,5 +1,6 @@
 import axios from "axios";
-import { authHeader, baseUrl } from "../utils";
+import { authHeader } from "../utils";
+import { API_BASE_URL } from "../constants";
 
 export const authenticationService = { login, register, logout };
 
@@ -7,7 +8,7 @@ login = async ({ username, password }) => {
   const body = JSON.stringify({ username, password });
 
   return await axios
-    .post(`${baseUrl.get()}/api/auth/signin`, body, {
+    .post(`${API_BASE_URL}/api/auth/signin`, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,7 +27,7 @@ logout = async () => {
 register = async (user) => {
   const body = JSON.stringify(user);
 
-  return await axios.post(`${baseUrl.get()}/api/auth/signup`, body, {
+  return await axios.post(`${API_BASE_URL}/api/auth/signup`, body, {
     headers: {
       "Content-Type": "application/json",
     },
