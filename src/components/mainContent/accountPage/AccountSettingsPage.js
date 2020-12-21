@@ -6,7 +6,7 @@ import BasicSettings from "./BasicSettings";
 import NotificationsSettings from "./NotificationsSettings";
 import PasswordSettings from "./PasswordSettings";
 import {useSelector} from "react-redux";
-import {currrentUserSelector} from "../../selectors";
+import {currrentUserSelector} from "../../../selectors";
 import {Redirect} from "react-router-dom";
 
 const AccountSettingsPage = () => {

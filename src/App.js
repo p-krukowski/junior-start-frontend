@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import OAuth2RedirectHandler from "./components/oauth2/OAuth2RedirectHandler";
 import {loggedInSelector} from "./selectors";
 import MessengerPage from "./components/mainContent/messenger/MessengerPage";
-import AccountSettingsPage from "./components/accountPage/AccountSettingsPage";
+import AccountSettingsPage from "./components/mainContent/accountPage/AccountSettingsPage";
 import Grid from "@material-ui/core/Grid";
 import {Hidden} from "@material-ui/core";
 
