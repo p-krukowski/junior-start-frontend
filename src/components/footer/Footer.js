@@ -1,6 +1,7 @@
 import React from "react";
-import { FooterStyles } from "../../styles/footerStyles";
+import {Grid} from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
-const Footer = () => <FooterStyles>©2020</FooterStyles>;
+const Footer = () => <Box p={1}><Grid container justify="center">©2020</Grid></Box>;
 
 export default Footer;

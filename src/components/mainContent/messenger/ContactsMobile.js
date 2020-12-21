@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import Contact from "./Contact";
-import {ContactsMobileLayout, ContactsTitle} from "../../../styles/messengerStyles";
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import {Typography} from "@material-ui/core";
 
 const contacts = [
     {
@@ -40,19 +41,31 @@ class ContactsMobile extends Component {
 
     render() {
         return (
-            <ContactsMobileLayout>
-                <ContactsTitle>
-                    <RecentActorsIcon fontSize='large'/>
-                    <Box mx={1} my='auto'>
-                        <h3>Kontakty</h3>
+            <Grid container direction="column">
+                <Grid item>
+                    <Box m={1} width="100%">
+                        <Grid container alignItems="center">
+                            <Grid item>
+                                <Box m={1}>
+                                    <RecentActorsIcon fontSize="large"/>
+                                </Box>
+                            </Grid>
+                            <Grid item>
+                                <Typography variant="h6" noWrap>
+                                    Kontakty
+                                </Typography>
+                            </Grid>
+                        </Grid>
                     </Box>
-                </ContactsTitle>
+                </Grid>
                 {
                     contacts.length !== 0 && contacts.map(contact => (
-                        <Contact key={contact.id} name={contact.name}/>
+                        <Grid key={contact.id} item>
+                            <Contact name={contact.name}/>
+                        </Grid>
                     ))
                 }
-            </ContactsMobileLayout>
+            </Grid>
         );
     }
 }

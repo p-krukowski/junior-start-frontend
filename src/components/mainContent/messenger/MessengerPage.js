@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import Contacts from "./Contacts";
 import Conversation from "./Conversation";
 import {Divider} from "@material-ui/core";
-import {DesktopOnly, MessengerPageLayout} from "../../../styles/messengerStyles";
+import Hidden from "@material-ui/core/Hidden";
+import Grid from "@material-ui/core/Grid";
+import {FullHeightGrid} from "../../../styles/gridStyles";
+import Box from "@material-ui/core/Box";
 
 
 class MessengerPage extends Component {
@@ -21,13 +24,19 @@ class MessengerPage extends Component {
         const {demoContact, isComponentReady} = this.state;
         return (
             isComponentReady &&
-            <MessengerPageLayout id='messenger-page'>
-                <DesktopOnly>
-                    <Contacts/>
-                    <Divider orientation="vertical" flexItem/>
-                </DesktopOnly>
-                <Conversation contact={demoContact}/>
-            </MessengerPageLayout>
+            <Box m={{xs: -1, sm: -2}} mx={{md: -4, lg: -10}} height="100%">
+                <FullHeightGrid container>
+                    <Hidden xsDown>
+                        <Grid item xs={4}>
+                            <Contacts/>
+                        </Grid>
+                        <Divider orientation="vertical" flexItem/>
+                    </Hidden>
+                    <Grid item xs>
+                        <Conversation contact={demoContact}/>
+                    </Grid>
+                </FullHeightGrid>
+            </Box>
         );
     }
 }

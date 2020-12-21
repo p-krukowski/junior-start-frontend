@@ -1,12 +1,16 @@
 import React, {Component} from "react";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-import {IconButton} from "@material-ui/core";
+import {IconButton, Typography} from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import Messages from "./Messages";
-import {ConversationLayout, Header, MobileOnly} from "../../../styles/messengerStyles";
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import {Link} from "react-router-dom";
+import Hidden from "@material-ui/core/Hidden";
+import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import {FullHeightGrid} from "../../../styles/gridStyles";
+import Box from "@material-ui/core/Box";
 
 const messagesDb = [
     {
@@ -68,23 +72,40 @@ class Conversation extends Component {
         const {isComponentReady, messages} = this.state;
         return (
             isComponentReady &&
-            <ConversationLayout id='conversation'>
-                <Header>
-                    <h3>{contact.name}</h3>
-                    <MobileOnly>
-                        <IconButton size='small' component={Link} to='/wiadomosci/kontakty'>
-                            <RecentActorsIcon fontSize='large'/>
-                        </IconButton>
-                    </MobileOnly>
-                </Header>
-                <Messages messages={messages}/>
-                <Paper component='form' style={{display: 'flex'}}>
-                    <InputBase multiline fullWidth/>
-                    <IconButton size='small'>
-                        <SendIcon fontSize='small' color='primary'/>
-                    </IconButton>
-                </Paper>
-            </ConversationLayout>
+            <FullHeightGrid container direction="column" justify="space-between">
+                <Grid item>
+                    <Box p={1}>
+                        <Grid container justify="space-between" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h6">{contact.name}</Typography>
+                            </Grid>
+                            <Hidden smUp>
+                                <Grid item>
+                                    <IconButton size='small' component={Link} to='/wiadomosci/kontakty'>
+                                        <RecentActorsIcon fontSize='large'/>
+                                    </IconButton>
+                                </Grid>
+                            </Hidden>
+                        </Grid>
+                    </Box>
+                    <Divider/>
+                </Grid>
+                <Grid item xs container direction="column" justify="flex-end">
+                    <Box p={1}>
+                        <Grid item>
+                            <Messages messages={messages}/>
+                        </Grid>
+                        <Grid item>
+                            <Paper>
+                                <InputBase multiline fullWidth/>
+                                <IconButton size='small'>
+                                    <SendIcon fontSize='small' color='primary'/>
+                                </IconButton>
+                            </Paper>
+                        </Grid>
+                    </Box>
+                </Grid>
+            </FullHeightGrid>
         );
     }
 }

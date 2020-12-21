@@ -1,5 +1,7 @@
 import React, {Component} from "react";
-import {Content, MessageLayout, Time} from "../../../styles/messengerStyles";
+import {Grid, Typography} from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 
 const user = {
     id: 3,
@@ -15,14 +17,27 @@ class Message extends Component {
     render() {
         const {message} = this.props;
         return (
-            <MessageLayout style={this.isMessageOutcoming() ? {flexDirection: 'row-reverse'} : {}}>
-                <Content>
-                    {message.content}
-                </Content>
-                <Time>
-                    {message.timestamp}
-                </Time>
-            </MessageLayout>
+            <Box mb={1}>
+                <Grid
+                    container
+                    direction={this.isMessageOutcoming() ? 'row-reverse' : 'row'}
+                >
+                    <Grid item xs={9}>
+                        <Paper elevation={0}>
+                            <Box px={2} py={1}>
+                                {message.content}
+                            </Box>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={3} container alignItems="center" justify="center">
+                        <Box>
+                            <Typography variant="caption">
+                                {message.timestamp}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                </Grid>
+            </Box>
         );
     }
 }

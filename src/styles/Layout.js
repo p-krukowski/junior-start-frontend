@@ -27,10 +27,6 @@ const GlobalStyle = createGlobalStyle`
     background: ${colors.background};
   }
   
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,

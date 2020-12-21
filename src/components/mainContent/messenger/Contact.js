@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
-import {ContactLayout, Name} from "../../../styles/messengerStyles";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {Link} from "react-router-dom";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import {Typography} from "@material-ui/core";
 
 class Contact extends Component {
     render() {
         return (
-            <ContactLayout component={Link} to='/wiadomosci'>
-                <AccountCircleIcon/>
-                <Name>{this.props.name}</Name>
-            </ContactLayout>
+            <ListItem button component={Link} to='/wiadomosci'>
+                <ListItemIcon>
+                    <AccountCircleIcon/>
+                </ListItemIcon>
+                <ListItemText
+                    primary={<Typography noWrap>{this.props.name}</Typography>}
+                />
+            </ListItem>
         );
     }
 }

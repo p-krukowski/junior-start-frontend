@@ -5,7 +5,6 @@ import {CustomCheckboxWithLabel, TextInput} from "../common";
 import {useDispatch, useSelector} from "react-redux";
 import {authenticationActions} from "../../actions";
 import {loginValidationSchema} from "../../utils/validation";
-import {LoginFailureAlertStyles} from "../../styles/alertStyles";
 import OAuth2Signin from "../../components/oauth2/OAuth2Signin";
 import {authenticationErrorSelector} from "../../selectors";
 import Grid from "@material-ui/core/Grid";
@@ -72,9 +71,9 @@ const SignInForm = () => {
                                 Zaloguj
                             </Button>
                             {authenticationError ? (
-                                <LoginFailureAlertStyles>
+                                <Typography color="error">
                                     Nieprawidłowy login lub hasło. Spróbuj ponownie.
-                                </LoginFailureAlertStyles>
+                                </Typography>
                             ) : null}
                         </Grid>
                         <Grid item container justify={"center"}>

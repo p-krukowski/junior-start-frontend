@@ -5,7 +5,6 @@ import MainContent from "./components/mainContent/MainContent";
 import RightMenu from "./components/rightMenu/RightMenu";
 import Footer from "./components/footer/Footer";
 import Divider from "@material-ui/core/Divider";
-import {ContentGrid} from "./styles/contentStyles";
 import {history} from "./utils";
 import {useDispatch, useSelector} from "react-redux";
 import {alertActions, userActions} from "./actions";
@@ -17,7 +16,9 @@ import MessengerPage from "./components/mainContent/messenger/MessengerPage";
 import AccountSettingsPage from "./components/mainContent/accountPage/AccountSettingsPage";
 import Grid from "@material-ui/core/Grid";
 import {Hidden} from "@material-ui/core";
-import MainContentLayout from "./components/mainContent/MainContentLayout";
+import {FullHeightGrid} from "./styles/gridStyles";
+import ContactsMobile from "./components/mainContent/messenger/ContactsMobile";
+import Box from "@material-ui/core/Box";
 
 function App() {
     const loggedIn = useSelector(loggedInSelector);
@@ -35,20 +36,21 @@ function App() {
         <Router>
             <Layout>
                 <Navbar/>
-                <ContentGrid container>
+                <FullHeightGrid container>
                     <Grid item xs>
-                        <MainContentLayout>
+                        <Box p={{xs: 1, sm: 2}} px={{md: 4, lg: 10}} height="100%">
                             <Switch>
                                 <Route path="/profile" component={() => <div>Profile</div>} exact/>
                                 <Route exact component={MainContent} path="/"/>
                                 <Route exact component={MessengerPage} path="/wiadomosci"/>
+                                <Route exact component={ContactsMobile} path='/wiadomosci/kontakty'/>
                                 <Route exact component={AccountSettingsPage} path="/moje-konto/ustawienia"/>
                                 <Route
                                     path="/oauth2/redirect"
                                     component={OAuth2RedirectHandler}
                                 />
                             </Switch>
-                        </MainContentLayout>
+                        </Box>
                     </Grid>
                     <Hidden only="xs">
                         <Divider orientation="vertical" flexItem/>
@@ -56,7 +58,7 @@ function App() {
                             <RightMenu/>
                         </Grid>
                     </Hidden>
-                </ContentGrid>
+                </FullHeightGrid>
                 <Divider/>
                 <Footer/>
             </Layout>

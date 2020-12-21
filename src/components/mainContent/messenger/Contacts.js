@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Contact from "./Contact";
-import {ContactsLayout, ContactsTitle} from "../../../styles/messengerStyles";
 import RecentActorsIcon from '@material-ui/icons/RecentActors';
 import Box from "@material-ui/core/Box";
+import {Grid, Typography} from "@material-ui/core";
 
 const contacts = [
     {
@@ -40,19 +40,29 @@ class Contacts extends Component {
 
     render() {
         return (
-            <ContactsLayout id='contacts'>
-                <ContactsTitle>
-                    <RecentActorsIcon/>
-                    <Box mx={1} my='auto'>
-                        <h3>Kontakty</h3>
+            <Grid container direction="column">
+                <Grid item>
+                    <Box m={1}>
+                        <Grid container wrap="nowrap" alignItems="center">
+                            <Grid item xs={3}>
+                                <RecentActorsIcon fontSize="large"/>
+                            </Grid>
+                            <Grid item xs>
+                                <Typography variant="h6" noWrap>
+                                    Kontakty
+                                </Typography>
+                            </Grid>
+                        </Grid>
                     </Box>
-                </ContactsTitle>
+                </Grid>
                 {
                     contacts.length !== 0 && contacts.map(contact => (
-                        <Contact key={contact.id} name={contact.name}/>
+                        <Grid key={contact.id} item xs={12}>
+                            <Contact name={contact.name}/>
+                        </Grid>
                     ))
                 }
-            </ContactsLayout>
+            </Grid>
         );
     }
 }
