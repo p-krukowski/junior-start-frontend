@@ -17,6 +17,7 @@ import MessengerPage from "./components/mainContent/messenger/MessengerPage";
 import AccountSettingsPage from "./components/mainContent/accountPage/AccountSettingsPage";
 import Grid from "@material-ui/core/Grid";
 import {Hidden} from "@material-ui/core";
+import MainContentLayout from "./components/mainContent/MainContentLayout";
 
 function App() {
     const loggedIn = useSelector(loggedInSelector);
@@ -36,16 +37,18 @@ function App() {
                 <Navbar/>
                 <ContentGrid container>
                     <Grid item xs>
-                        <Switch>
-                            <Route path="/profile" component={() => <div>Profile</div>} exact/>
-                            <Route exact component={MainContent} path="/"/>
-                            <Route exact component={MessengerPage} path="/wiadomosci"/>
-                            <Route exact component={AccountSettingsPage} path="/moje-konto/ustawienia"/>
-                            <Route
-                                path="/oauth2/redirect"
-                                component={OAuth2RedirectHandler}
-                            />
-                        </Switch>
+                        <MainContentLayout>
+                            <Switch>
+                                <Route path="/profile" component={() => <div>Profile</div>} exact/>
+                                <Route exact component={MainContent} path="/"/>
+                                <Route exact component={MessengerPage} path="/wiadomosci"/>
+                                <Route exact component={AccountSettingsPage} path="/moje-konto/ustawienia"/>
+                                <Route
+                                    path="/oauth2/redirect"
+                                    component={OAuth2RedirectHandler}
+                                />
+                            </Switch>
+                        </MainContentLayout>
                     </Grid>
                     <Hidden only="xs">
                         <Divider orientation="vertical" flexItem/>
